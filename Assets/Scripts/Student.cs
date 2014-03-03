@@ -12,9 +12,10 @@ public class Student : MonoBehaviour {
 
 	public string keyRotateLeft = "a";
 	public string keyRotateRight = "d";
-	public string keyShoot = "W";
+	public string keyShoot = "w";
 	public string keyMoveLeft = "left";
 	public string keyMoveRight = "right";
+	public float currentAngle = 0;
 
 	public GameObject gun;
 
@@ -37,13 +38,14 @@ public class Student : MonoBehaviour {
 				transform.Translate(Vector3.right * moveDistance);
 		}
 
-		if (Input.GetKey (keyRotateLeft) && (transform.rotation.z < maxRotationAngle)) {
+		if (Input.GetKey (keyRotateLeft) && (currentAngle < maxRotationAngle)) {
 			gun.transform.Rotate(0, 0, rotationAngle);
-
+			currentAngle += rotationAngle;
 		}
 
-		if (Input.GetKey(keyRotateRight) && (transform.rotation.z > -maxRotationAngle) ) {
+		if (Input.GetKey(keyRotateRight) && (currentAngle > -maxRotationAngle) ) {
 			gun.transform.Rotate(0, 0, -rotationAngle);
+			currentAngle -= rotationAngle;
 		}
 
 	}
