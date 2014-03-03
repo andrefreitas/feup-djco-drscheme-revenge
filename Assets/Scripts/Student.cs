@@ -16,6 +16,9 @@ public class Student : MonoBehaviour {
 	public string keyMoveLeft = "left";
 	public string keyMoveRight = "right";
 	public float currentAngle = 0;
+	public GameObject bulletObj;
+	public long timer = 20;
+	public long deltaTimeToBullet = 20;
 
 	public GameObject gun;
 
@@ -26,7 +29,7 @@ public class Student : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		timer--;
 		if (Input.GetKey (keyMoveLeft)) {
 
 			if(transform.position.x > xMin)
@@ -43,9 +46,18 @@ public class Student : MonoBehaviour {
 			currentAngle += rotationAngle;
 		}
 
-		if (Input.GetKey(keyRotateRight) && (currentAngle > -maxRotationAngle) ) {
+		else if (Input.GetKey(keyRotateRight) && (currentAngle > -maxRotationAngle) ) {
 			gun.transform.Rotate(0, 0, -rotationAngle);
 			currentAngle -= rotationAngle;
+		}
+
+		if (Input.GetKey (keyShoot) && timer <= 0) {
+			Vector3 bulletPosition = new Vector3(gun.transform.position.x,
+			                                     gun.transform.position.y,
+			                                     gun.transform.position.z);
+			bulletPosition.y = -2.8f;
+			Instantiate(bulletObj, bulletPosition, gun.transform.rotation);
+			timer = deltaTimeToBullet;
 		}
 
 	}
