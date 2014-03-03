@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cadeira : MonoBehaviour {
+public class Student : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
