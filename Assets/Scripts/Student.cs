@@ -19,12 +19,19 @@ public class Student : MonoBehaviour {
 	public GameObject bulletObj;
 	public long timer = 20;
 	public long deltaTimeToBullet = 20;
+	public float force = 150f;
 
 	public GameObject gun;
+	public GameObject bulletRef;
 
 	// Use this for initialization
 	void Start () {
 		gun = GameObject.Find("Gun");
+		bulletRef = (GameObject) Instantiate(bulletObj, gun.transform.position, gun.transform.rotation);
+		bulletRef.transform.parent = gun.transform;
+		bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f);
+		bulletRef.transform.position += new Vector3(0, 1f, 0);
+		bulletRef.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -52,11 +59,14 @@ public class Student : MonoBehaviour {
 		}
 
 		if (Input.GetKey (keyShoot) && timer <= 0) {
-			Vector3 bulletPosition = new Vector3(gun.transform.position.x,
-			                                     gun.transform.position.y,
-			                                     gun.transform.position.z);
-			bulletPosition.y = -2.8f;
-			Instantiate(bulletObj, bulletPosition, gun.transform.rotation);
+			GameObject instance1 = (GameObject) Instantiate(bulletRef, bulletRef.transform.position, bulletRef.transform.rotation);
+			instance1.SetActive(true);
+
+			float angleRad = (Mathf.PI * currentAngle) / 180;
+			float x = - Mathf.Sin(angleRad) * force;
+			float y = Mathf.Cos(angleRad) * force;
+
+			instance1.rigidbody.AddForce(new Vector3(x, y, 0));
 			timer = deltaTimeToBullet;
 		}
 
