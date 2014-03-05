@@ -12,4 +12,8 @@ public class Course : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter(Collision col) {
+		Destroy(gameObject);
+	}
 }
