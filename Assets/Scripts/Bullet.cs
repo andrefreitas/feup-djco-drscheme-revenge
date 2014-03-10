@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.name == "LimitCollider") {
-			Debug.Log("LimitCollider");
+		if (col.gameObject.name == "LeftLimit" || col.gameObject.name == "RightLimit") {
+			Debug.Log("Wall collision...");
 		}
 		else Destroy(gameObject);
 	}
