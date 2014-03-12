@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Course : MonoBehaviour {
+	public AudioClip sound;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,7 @@ public class Course : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
+		audio.PlayOneShot(sound);
 		Destroy(gameObject);
 	}
 }

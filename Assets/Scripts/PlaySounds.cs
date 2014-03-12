@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class PlaySounds : MonoBehaviour {
-	public AudioClip teleportSound;
+	public AudioClip sound;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,7 +15,7 @@ public class PlaySounds : MonoBehaviour {
 		
 		if (Input.GetKeyDown("w"))
 		{
-			audio.PlayOneShot(teleportSound);
+			audio.PlayOneShot(sound);
 		}
 		
 		
