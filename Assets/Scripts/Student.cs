@@ -21,16 +21,16 @@ public class Student : MonoBehaviour {
 	public long deltaTimeToBullet = 20;
 	public float force = 150f;
 
-	public GameObject gun;
+	public GameObject ship;
 	public GameObject bulletRef;
 	public int lifes = 3;
 	public AudioClip sound;
 
 	// Use this for initialization
 	void Start () {
-		gun = GameObject.Find("Gun");
-		bulletRef = (GameObject) Instantiate(bulletObj, gun.transform.position, gun.transform.rotation);
-		bulletRef.transform.parent = gun.transform;
+		ship = GameObject.Find("Ship");
+		bulletRef = (GameObject) Instantiate(bulletObj, ship.transform.position, ship.transform.rotation);
+		bulletRef.transform.parent = ship.transform;
 		bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f);
 		bulletRef.transform.position += new Vector3(0, 1f, 0);
 		bulletRef.SetActive (false);
@@ -51,12 +51,12 @@ public class Student : MonoBehaviour {
 		}
 
 		if (Input.GetKey (keyRotateLeft) && (currentAngle < maxRotationAngle)) {
-			gun.transform.Rotate(0, 0, rotationAngle);
+			ship.transform.Rotate(0, 0, rotationAngle);
 			currentAngle += rotationAngle;
 		}
 
 		else if (Input.GetKey(keyRotateRight) && (currentAngle > -maxRotationAngle) ) {
-			gun.transform.Rotate(0, 0, -rotationAngle);
+			ship.transform.Rotate(0, 0, -rotationAngle);
 			currentAngle -= rotationAngle;
 		}
 
