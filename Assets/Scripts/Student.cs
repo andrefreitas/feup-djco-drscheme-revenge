@@ -23,6 +23,8 @@ public class Student : MonoBehaviour {
 
 	public GameObject gun;
 	public GameObject bulletRef;
+	public int lifes = 3;
+	public AudioClip sound;
 
 	// Use this for initialization
 	void Start () {
@@ -70,5 +72,19 @@ public class Student : MonoBehaviour {
 			timer = deltaTimeToBullet;
 		}
 
+	}
+
+	public void decreaseLifes() {
+		if (lifes > 0) {
+			lifes--;
+		}
+
+		Debug.Log ("Lost a life!");
+	}
+
+	void OnCollisionEnter(Collision col) {
+		decreaseLifes ();
+		//audio.PlayOneShot(sound);
+		//Destroy(gameObject);
 	}
 }

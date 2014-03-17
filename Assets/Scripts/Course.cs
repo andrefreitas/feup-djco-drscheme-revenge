@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Course : MonoBehaviour {
 	public AudioClip sound;
+	public GameObject audioObject;
 
 	// Use this for initialization
 	void Start () {
-	
+		audioObject = GameObject.Find ("AudioObject");
 	}
 	
 	// Update is called once per frame
@@ -15,7 +16,7 @@ public class Course : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		audio.PlayOneShot(sound);
+		audioObject.audio.PlayOneShot (sound);
 		Destroy(gameObject);
 	}
 }
