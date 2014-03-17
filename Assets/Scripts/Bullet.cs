@@ -25,7 +25,12 @@ public class Bullet : MonoBehaviour {
 		if (col.gameObject.name == "LeftLimit" || col.gameObject.name == "RightLimit") {
 						Debug.Log ("Wall collision...");
 						transform.RotateAround (transform.position, new Vector3 (0, 1, 0), 180);
-		} else if (currentCollisions < maxCollisions) {
+		
+		} else if (col.gameObject.name == "Student") {
+				Destroy(gameObject);
+		}
+
+		else if (currentCollisions < maxCollisions) {
 			currentCollisions++;
 		}
 

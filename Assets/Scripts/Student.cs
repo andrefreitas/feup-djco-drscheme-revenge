@@ -23,12 +23,14 @@ public class Student : MonoBehaviour {
 
 	public GameObject ship;
 	public GameObject bulletRef;
+	public GameObject audioObject;
+	public AudioClip shotSound;
 	public int lifes = 3;
-	public AudioClip sound;
 
 	// Use this for initialization
 	void Start () {
 		ship = GameObject.Find("Ship");
+		audioObject = GameObject.Find ("AudioObject");
 		bulletRef = (GameObject) Instantiate(bulletObj, ship.transform.position, ship.transform.rotation);
 		bulletRef.transform.parent = ship.transform;
 		bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f);
@@ -70,6 +72,7 @@ public class Student : MonoBehaviour {
 
 			instance1.rigidbody.AddForce(new Vector3(x, y, 0));
 			timer = deltaTimeToBullet;
+			audioObject.audio.PlayOneShot(shotSound);
 		}
 
 	}
@@ -84,6 +87,11 @@ public class Student : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		decreaseLifes ();
+
+		if (lifes == 0) {
+			Destroy (gameObject);
+			Debug.Log ("Game Over!");
+		}
 		//audio.PlayOneShot(sound);
 		//Destroy(gameObject);
 	}
