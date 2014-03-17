@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
+	public int maxCollisions = 2;
+	public int currentCollisions = 0;
+
 	// Use this for initialization
 	void Start () {
 		rigidbody.freezeRotation = true;
@@ -20,8 +23,10 @@ public class Bullet : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "LeftLimit" || col.gameObject.name == "RightLimit") {
-			Debug.Log("Wall collision...");
-			transform.RotateAround(transform.position, new Vector3(0, 1, 0), 180);
+						Debug.Log ("Wall collision...");
+						transform.RotateAround (transform.position, new Vector3 (0, 1, 0), 180);
+		} else if (currentCollisions < maxCollisions) {
+			currentCollisions++;
 		}
 
 		else Destroy(gameObject);
