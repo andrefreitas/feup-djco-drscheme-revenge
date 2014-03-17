@@ -19,7 +19,7 @@ public class AllCourses : MonoBehaviour {
 	public bool side = true;
 	public float deltaMove = 0.2f;
 	public float deltaDown = 0.2f;
-	public float zRef = -0.8f;
+	public float zRef = -1.5f;
 	//var moveSound : AudioClip;
 
 	// Use this for initialization
