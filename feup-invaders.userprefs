@@ -2,12 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Student.cs">
     <Files>
-      <File FileName="Assets\Scripts\Bullet.cs" Line="29" Column="24" />
-      <File FileName="Assets\Scripts\Student.cs" Line="27" Column="25" />
-      <File FileName="Assets\Scripts\Course.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AllCourses.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="34" Column="2" />
-      <File FileName="Assets\Scripts\PlaySounds.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bullet.cs" Line="30" Column="12" />
+      <File FileName="Assets\Scripts\Student.cs" Line="82" Column="12" />
+      <File FileName="Assets\Scripts\Course.cs" Line="23" Column="1" />
+      <File FileName="Assets\Scripts\AllCourses.cs" Line="70" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

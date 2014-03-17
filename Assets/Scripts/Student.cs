@@ -25,6 +25,7 @@ public class Student : MonoBehaviour {
 	public GameObject bulletRef;
 	public GameObject audioObject;
 	public AudioClip shotSound;
+	public AudioClip shipExplosionSound;
 	public int lifes = 3;
 
 	// Use this for initialization
@@ -87,6 +88,7 @@ public class Student : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		decreaseLifes ();
+		audioObject.audio.PlayOneShot(shipExplosionSound);
 
 		if (lifes == 0) {
 			Destroy (gameObject);
