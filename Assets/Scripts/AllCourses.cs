@@ -50,11 +50,15 @@ public class AllCourses : MonoBehaviour {
 			if(side && transform.position.x >= limitRight) {
 				side = false;
 				transform.Translate(new Vector3(0, -deltaDown, 0));
+				if(changePeriod > 30)
+					changePeriod -= 3;
 			}
 			
 			else if(!side && transform.position.x <= 0) {
 				side = true;
 				transform.Translate(new Vector3(0, -deltaDown, 0));
+				if(changePeriod > 30)
+					changePeriod -= 3;
 			}
 			
 			else if(side)
