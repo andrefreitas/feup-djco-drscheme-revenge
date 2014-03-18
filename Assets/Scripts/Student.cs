@@ -34,7 +34,7 @@ public class Student : MonoBehaviour {
 		audioObject = GameObject.Find ("AudioObject");
 		bulletRef = (GameObject) Instantiate(bulletObj, ship.transform.position, ship.transform.rotation);
 		bulletRef.transform.parent = ship.transform;
-		bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f);
+		/*bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f)*/;
 		bulletRef.transform.position += new Vector3(0, 1f, 0);
 		bulletRef.SetActive (false);
 	}
