@@ -4,7 +4,7 @@ using System.Collections;
 public class Student : MonoBehaviour {
 
 	public float moveDistance = 0.1f;
-	public float rotationAngle = 1f;
+	public float rotationAngle = 1f; 
 
 	public float xMin = -5.9f;
 	public float xMax = 5.9f;
@@ -42,38 +42,44 @@ public class Student : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer--;
-		if (Input.GetKey (keyMoveLeft)) {
 
-			if(transform.position.x > xMin)
-				transform.Translate(Vector3.left * moveDistance);
-
-		} else if (Input.GetKey (keyMoveRight)) {
-
-			if(transform.position.x < xMax)
-				transform.Translate(Vector3.right * moveDistance);
+		// Move Ship Left
+		if (Input.GetKey (keyMoveLeft) && (transform.position.x > xMin)) {
+			transform.Translate(Vector3.left * moveDistance);
 		}
 
+		// Move Ship Right
+		else if (Input.GetKey (keyMoveRight) && (transform.position.x < xMax)) {
+			transform.Translate(Vector3.right * moveDistance);
+		}
+
+		// Rotate Left
 		if (Input.GetKey (keyRotateLeft) && (currentAngle < maxRotationAngle)) {
 			ship.transform.Rotate(0, 0, rotationAngle);
 			currentAngle += rotationAngle;
 		}
 
+		// Rotate Right
 		else if (Input.GetKey(keyRotateRight) && (currentAngle > -maxRotationAngle) ) {
 			ship.transform.Rotate(0, 0, -rotationAngle);
 			currentAngle -= rotationAngle;
 		}
 
+		// Shoot
 		if (Input.GetKey (keyShoot) && timer <= 0) {
+
+			// Create Bullet
 			GameObject instance1 = (GameObject) Instantiate(bulletRef, bulletRef.transform.position, bulletRef.transform.rotation);
 			instance1.SetActive(true);
-
 			float angleRad = (Mathf.PI * currentAngle) / 180;
 			float x = - Mathf.Sin(angleRad) * force;
 			float y = Mathf.Cos(angleRad) * force;
-
-			instance1.rigidbody.AddForce(new Vector3(x, y, 0));
+			instance1.rigidbody2D.AddForce(new Vector3(x, y, 0));
 			timer = deltaTimeToBullet;
+
+			// Play sound
 			audioObject.audio.PlayOneShot(shotSound);
+
 		}
 
 	}
@@ -85,6 +91,7 @@ public class Student : MonoBehaviour {
 
 		Debug.Log ("Lost a life!");
 	}
+	
 
 	void OnCollisionEnter(Collision col) {
 		decreaseLifes ();
