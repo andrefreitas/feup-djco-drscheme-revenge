@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour {
 	public int maxCollisions = 2;
 	public int currentCollisions = 0;
 
-	// Use this for initialization
+
 	void Start () {
-		rigidbody.freezeRotation = true;
+
 	}
 	
 	// Update is called once per frame
@@ -21,18 +21,13 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.name == "LeftLimit" || col.gameObject.name == "RightLimit") {
-						
-		
-		} else if (col.gameObject.name == "Student") {
-				Destroy(gameObject);
+	void OnCollisionEnter2D(Collision2D col) {
+		string name = col.gameObject.name;
+		Debug.Log ("hit " + name);
+
+		if (name == "leftWall") {
+			transform.Rotate(0, 0, 130);
 		}
 
-		else if (currentCollisions < maxCollisions) {
-			currentCollisions++;
-		}
-
-		else Destroy(gameObject);
 	}
 }

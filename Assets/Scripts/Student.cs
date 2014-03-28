@@ -6,8 +6,8 @@ public class Student : MonoBehaviour {
 	public float moveDistance = 0.1f;
 	public float rotationAngle = 1f; 
 
-	public float xMin = -5.9f;
-	public float xMax = 5.9f;
+	public float xMin = -5.2f;
+	public float xMax = 5.2f;
 	public float maxRotationAngle = 45f;
 
 	public string keyRotateLeft = "a";

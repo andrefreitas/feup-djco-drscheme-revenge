@@ -24,6 +24,7 @@ public class AllCourses : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		/*
 		int i = 0;
 		
 		for(i = 0; i < 11; i++) {
@@ -39,6 +40,7 @@ public class AllCourses : MonoBehaviour {
 			instance4.transform.parent = gameObject.transform;
 			instance5.transform.parent = gameObject.transform;
 		}
+		*/
 	}
 	
 	// Update is called once per frame
