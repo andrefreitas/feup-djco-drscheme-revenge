@@ -63,5 +63,14 @@ TextureImporter:
         height: 98
       alignment: 0
       pivot: {x: .5, y: .5}
+    - name: enemy_explosion
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 33
+        width: 96
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
