@@ -19,26 +19,31 @@ public class Student : MonoBehaviour {
 	public GameObject bulletObj;
 	public long timer = 20;
 	public long deltaTimeToBullet = 20;
-	public float force = 150f;
+	public float force = 350f;
 
 	public GameObject ship;
 	public GameObject bulletRef;
-	public GameObject audioObject;
+
+	public GameObject soundEffects;
+	public GameObject soundTrack;
 	public AudioClip shotSound;
-	public AudioClip shipExplosionSound;
-	public AudioClip soundTrack;
+	public AudioClip soundTrackAudio;
+
 	public int lifes = 3;
 
 	// Use this for initialization
 	void Start () {
-		ship = GameObject.Find("Ship");
-		audioObject = GameObject.Find ("AudioObject");
+		ship = GameObject.Find ("Ship");
+
 		bulletRef = (GameObject) Instantiate(bulletObj, ship.transform.position, ship.transform.rotation);
 		bulletRef.transform.parent = ship.transform;
 		/*bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f)*/;
 		bulletRef.transform.position += new Vector3(0, 1f, 0);
 		bulletRef.SetActive (false);
-		audioObject.audio.PlayOneShot(soundTrack);
+
+		soundEffects = GameObject.Find ("soundEffects");
+		soundTrack = GameObject.Find ("soundtrack");
+		soundTrack.audio.PlayOneShot(soundTrackAudio);
 	}
 	
 	// Update is called once per frame
@@ -80,7 +85,7 @@ public class Student : MonoBehaviour {
 			timer = deltaTimeToBullet;
 
 			// Play sound
-			audioObject.audio.PlayOneShot(shotSound);
+			soundEffects.audio.PlayOneShot(shotSound);
 
 		}
 
@@ -97,7 +102,7 @@ public class Student : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		decreaseLifes ();
-		audioObject.audio.PlayOneShot(shipExplosionSound);
+	
 
 		if (lifes == 0) {
 			Destroy (gameObject);

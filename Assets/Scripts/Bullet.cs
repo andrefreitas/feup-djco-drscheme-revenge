@@ -5,9 +5,13 @@ public class Bullet : MonoBehaviour {
 
 	public int maxCollisions = 2;
 	public int currentCollisions = 0;
+	public float speedforce = 150f;
+	public GameObject soundEffects;
+	public AudioClip bounce;
 
 
 	void Start () {
+		soundEffects = GameObject.Find ("soundEffects");
 
 	}
 	
@@ -23,11 +27,12 @@ public class Bullet : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		string name = col.gameObject.name;
-		Debug.Log ("hit " + name);
+		//Debug.Log ("hit " + name);
 
-		if (name == "leftWall") {
-			transform.Rotate(0, 0, 130);
+		if (name == "leftWall" || name == "rightWall" || name == "ProtectionCICA" || name == "ProtectionMoodle" || name == "ProtectionFEUPLoad" ) {
+			soundEffects.audio.PlayOneShot(bounce);
 		}
 
 	}
+	
 }
