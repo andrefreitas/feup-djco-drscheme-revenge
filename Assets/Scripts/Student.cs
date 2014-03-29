@@ -28,6 +28,7 @@ public class Student : MonoBehaviour {
 	public GameObject soundTrack;
 	public AudioClip shotSound;
 	public AudioClip soundTrackAudio;
+	public AudioClip soundShipHit;
 
 	public int lifes = 3;
 
@@ -91,24 +92,4 @@ public class Student : MonoBehaviour {
 
 	}
 
-	public void decreaseLifes() {
-		if (lifes > 0) {
-			lifes--;
-		}
-
-		Debug.Log ("Lost a life!");
-	}
-	
-
-	void OnCollisionEnter(Collision col) {
-		decreaseLifes ();
-	
-
-		if (lifes == 0) {
-			Destroy (gameObject);
-			Debug.Log ("Game Over!");
-		}
-		//audio.PlayOneShot(sound);
-		//Destroy(gameObject);
-	}
 }
