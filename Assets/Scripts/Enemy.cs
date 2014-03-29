@@ -12,13 +12,14 @@ public class Enemy : MonoBehaviour {
 	public float force = 4f;
 	public int signal;
 
+	public Sprite[] sprites = new Sprite[3];
+
 	public GameObject player;
 	public GameObject ball;
 
 	void Start () {
 		Debug.Log ("Enemy!!");
 		signal = 1;
-	
 	}
 	
 
@@ -53,6 +54,26 @@ public class Enemy : MonoBehaviour {
 		}
 		rigidbody2D.AddForce(new Vector2(1, 0) * force * signal);
 		
+	}
+
+	void OnCollisionEnter2D(Collision2D col) {
+		string name = col.gameObject.name;
+
+		if (name == "bullet") {
+			Debug.Log("detetou");
+			this.GetComponent<SpriteRenderer>().sprite = sprites[2];
+			StartCoroutine(WaitExplosion());
+		}
+		
+	}
+
+	IEnumerator WaitExplosion()
+	{
+		while (true) {
+			yield return new WaitForSeconds(0.3f);
+			Destroy(gameObject);
+		}
+
 	}
 
 }

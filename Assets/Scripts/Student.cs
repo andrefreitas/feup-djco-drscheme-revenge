@@ -40,6 +40,7 @@ public class Student : MonoBehaviour {
 		bulletRef.transform.parent = ship.transform;
 		/*bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f)*/;
 		bulletRef.transform.position += new Vector3(0, 1f, 0);
+		bulletRef.name = "bullet";
 		bulletRef.SetActive (false);
 
 		soundEffects = GameObject.Find ("soundEffects");
@@ -78,6 +79,7 @@ public class Student : MonoBehaviour {
 
 			// Create Bullet
 			GameObject instance1 = (GameObject) Instantiate(bulletRef, bulletRef.transform.position, bulletRef.transform.rotation);
+			instance1.name="bullet";
 			instance1.SetActive(true);
 			float angleRad = (Mathf.PI * currentAngle) / 180;
 			float x = - Mathf.Sin(angleRad) * force;

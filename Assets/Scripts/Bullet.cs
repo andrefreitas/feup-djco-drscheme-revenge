@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
 	public float speedforce = 150f;
 	public GameObject soundEffects;
 	public AudioClip bounce;
+	public AudioClip explode;
 
 
 	void Start () {
@@ -31,6 +32,10 @@ public class Bullet : MonoBehaviour {
 
 		if (name == "leftWall" || name == "rightWall" || name == "ProtectionCICA" || name == "ProtectionMoodle" || name == "ProtectionFEUPLoad" ) {
 			soundEffects.audio.PlayOneShot(bounce);
+		}
+		else if(name == "enemy") {
+			soundEffects.audio.PlayOneShot(explode);
+			Destroy(gameObject);
 		}
 
 	}
