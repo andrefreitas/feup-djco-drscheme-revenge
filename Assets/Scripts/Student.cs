@@ -26,6 +26,7 @@ public class Student : MonoBehaviour {
 	public GameObject audioObject;
 	public AudioClip shotSound;
 	public AudioClip shipExplosionSound;
+	public AudioClip soundTrack;
 	public int lifes = 3;
 
 	// Use this for initialization
@@ -37,6 +38,7 @@ public class Student : MonoBehaviour {
 		/*bulletRef.transform.localScale -= new Vector3 (0.6f, 0.2f, 0.6f)*/;
 		bulletRef.transform.position += new Vector3(0, 1f, 0);
 		bulletRef.SetActive (false);
+		audioObject.audio.PlayOneShot(soundTrack);
 	}
 	
 	// Update is called once per frame
